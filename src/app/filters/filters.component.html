@@ -1,0 +1,63 @@
+<div class="filter-section">
+    <button (click)="toggleFilters()">Filters</button>
+    <div class="filters" [class.collapsed]="showFilters">
+        <div class="currency">
+            <p>Select currency:</p>
+            <div *ngFor="let currency of availableCurrencies" class="currency-button">
+                <input type="button" [id]="currency" [value]="currency"
+                    [ngClass]="{'active': service.chosedCurrency === currency}"
+                    (click)="service.onCurrencyChange(currency)">
+            </div>
+
+        </div>
+        <div class="checkbox-button-container2">
+            <p>Select tags:</p>
+            <div class="checkbox-button-container" *ngFor="let tag of availableTags">
+                <input type="checkbox" [id]="tag" (change)="onTagChange(tag, $event)" [checked]="selectedTags.has(tag)" hidden>
+                <label [for]="tag">{{ tag }}</label>
+            </div>
+        </div>
+        <div class="rating-filter">
+            <p>Select rating:</p>
+            <div *ngFor="let option of ratingOptions" class="checkbox-button-container">
+                <input type="checkbox" [id]="option.label" (change)="onRatingChange(option.value, option.label, $event)" [checked]="ratingCheckedStates.has(option.label)" hidden>
+                <label [for]="option.label">{{ option.label }}</label>
+            </div>
+        </div>
+        <div class="rating-filter">
+            <form #priceForm="ngForm" (ngSubmit)="onPriceChange(priceForm)">
+                <div class="form-group">
+                    <label for="minPrice">Minimum Price:</label>
+                    <input type="number" id="minPrice" name="minPrice" (change)="onPriceChange(priceForm)" [(ngModel)]="minPrice" #minPriceModel="ngModel">
+                </div>
+            
+                <div class="form-group">
+                    <label for="maxPrice">Maximum Price:</label>
+                    <input type="number" id="maxPrice" name="maxPrice" (change)="onPriceChange(priceForm)" [(ngModel)]="maxPrice" #maxPriceModel="ngModel">
+                </div>
+            
+                
+
+            </form>
+        </div>
+        <div class="rating-filter">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" (change)="onDateChange()" [(ngModel)]="startDate" #startDateModel="ngModel">
+        
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" (change)="onDateChange()" [(ngModel)]="endDate" #startDateModel="ngModel">
+        
+            <button (click)="onDateChange()">Apply Filter</button>
+        </div>
+        <div class="currency">
+            <p>Show items per page:</p>
+            <div *ngFor="let items of itemsPerPageOptions" class="currency-button">
+                <input type="button" [id]="items" [value]="items"
+                    [ngClass]="{'active': items === service.itemsPerPage}"
+                    (click)="service.onItemsChange(items)">
+            </div>
+
+        </div>
+        <button class="filter-button" (click)="resetFilter()">Reset Filter</button>
+    </div>
+</div>

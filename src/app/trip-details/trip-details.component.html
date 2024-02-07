@@ -1,0 +1,91 @@
+<div class="back-button-container">
+    <button (click)="goToToursPage()" class="back-button">Back to Tours</button>
+</div>
+<div class="carousel-container">
+    <div class="carousel-slide">
+        <img [src]="tour.LinkDoZdjecia[currentSlideIndex]" alt="Carousel image" class="tour-image">
+    </div>
+    <button class="prev" (click)="onPrevClick()">&#10094;</button>
+    <button class="next" (click)="onNextClick()">&#10095;</button>
+</div>
+
+<div class="tour-info">
+    <h3>{{ tour.Nazwa }}</h3>
+    <div class="star-rating-no-hover">
+        <p>
+            <span *ngFor="let star of [].constructor(5); let i = index" class="star">
+                {{ i < tour.getRating() ? '★' : '☆' }} </span>
+                ({{ratingCount()}})
+        </p>
+    </div>
+    <p><strong>Destination:</strong> {{ tour.DocelowyKraj }}</p>
+    <p><strong>Start Date:</strong> {{ tour.DataRozpoczecia | date:'mediumDate' }}</p>
+    <p><strong>End Date:</strong> {{ tour.DataZakonczenia | date:'mediumDate' }}</p>
+    <p><strong>Price:</strong> {{ service.getPriceInChosenCurrency(tour) }} {{service.chosedCurrency}}</p>
+    <p><strong>Description:</strong> {{ tour.KrotkiOpis }}</p>
+    <p><strong>Available Spots:</strong> {{ tour.availableSpots }}</p>
+    <p><strong>Tags:</strong> {{ tour.tags.join(', ') }}</p>
+</div>
+
+<div class="tour-actions">
+    <button class="action-button" (click)="service.reserveSpot(tour)"
+        [disabled]="tour.availableSpots === 0">Book</button>
+    <button class="action-button" (click)="service.calcelReservation(tour)"
+        [disabled]="tour.availableSpots === tour.MaxIloscMiejsc">Cancel</button>
+</div>
+
+<div class="map">
+    <iframe 
+        [src]="mapUrl"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+
+<form class="review-form" #reviewForm="ngForm" (ngSubmit)="onSubmit(reviewForm.value)" novalidate>
+    <div class="form-group">
+        <div class="star-rating">
+            <p>
+                <span *ngFor="let star of [].constructor(5); let i = index" class="star" (click)="setRating(i + 1)">
+                    {{ i < rating ? '★' : '☆' }} 
+                </span>
+            </p>
+        </div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" ngModel required #nameModel="ngModel">
+        <div *ngIf="nameModel.invalid && nameModel.touched" class="error">
+            Name is required.
+        </div>
+        <label for="review">Review:</label>
+        <textarea id="review" name="review" ngModel required minlength="10" maxlength="500" #reviewModel="ngModel"></textarea>
+        <div *ngIf="reviewModel.errors?.['required'] && reviewModel.touched" class="error">
+            Review is required.
+        </div>
+        <div *ngIf="reviewModel.errors?.['minlength'] || reviewModel.errors?.['maxlength']" class="error">
+            Review must be between 10 and 500 characters.
+        </div>
+        <div class="date-input-container">
+            <label for="date">Purchase Date:</label>
+            <input type="date" id="date" name="date" ngModel #dateModel="ngModel">
+        </div>
+    </div>
+    <button type="submit" [disabled]="reviewForm.invalid" class="action-button">Add Review</button>
+</form>
+<div *ngIf="errors.length > 0">
+    <ul>
+        <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
+</div>
+
+<div class="reviews">
+    <div *ngFor="let review of tour.rating" class="review">
+        <div class="star-rating-no-hover">
+            <p>
+                <span *ngFor="let star of [].constructor(5); let i = index" class="star">
+                    {{ i < review.Rating ? '★' : '☆' }} </span>
+            </p>
+        </div>
+        <p class="review-name">{{review.User}} {{review.Date}}</p>
+        <p class="review-text">{{review.Comment}}</p>
+    </div>
+</div>

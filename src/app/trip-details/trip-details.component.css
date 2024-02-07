@@ -1,0 +1,256 @@
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  max-height: 700px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  width: 100%;
+  text-align: center;
+  /* Center the image if it doesn't cover the full width */
+}
+.date-input-container {
+  margin-bottom: 15px;
+}
+
+/* Styles for the label */
+.date-input-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Styles for the date input field */
+.date-input-container input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white; /* Ensuring the background is white */
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* Styles for focus state */
+.date-input-container input[type="date"]:focus {
+  border-color: #007bff; /* Highlight color when focused */
+  outline: none; /* Removing default focus outline */
+}
+
+.tour-image {
+  max-width: 100%;
+  height: 600px;
+}
+
+.tour-info {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #f3f3f3;
+  border-radius: 8px;
+}
+
+.tour-info h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.tour-info p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.tour-actions {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.action-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.action-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.action-button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+.star-rating {
+  text-align: center;
+  font-size: 24px;
+  color: #ffc107;
+}
+
+.star-rating .star {
+  cursor: default;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  color: white;
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  /* Give some space above the carousel */
+  background-color: #6c757d;
+  /* A neutral color, but you can choose any */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+  /* A slightly darker shade on hover */
+}
+
+.carousel-container {
+  position: relative;
+}
+
+.back-button-container {
+  margin-top: 20px;
+  /* Spacing from the top of the page or navbar */
+}
+
+.star-rating span {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+  color: #ffda06;
+  /* Default color of stars */
+}
+
+.star-rating span:hover~span {
+  color: #ddd;
+  /* Color of stars after the hovered star */
+}
+
+/* Review Form Styles */
+.review-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #f3f3f3;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 100px;
+}
+
+.form-group .error {
+  color: red;
+  margin-top: 5px;
+}
+
+button[type="action-button"] {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="action-button"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="action-button"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Reviews Display Styles */
+.reviews {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.review {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.star-rating {
+  font-size: 18px;
+  color: #ffc107;
+  /* Gold color for stars */
+}
+
+.star-rating-no-hover {
+  font-size: 18px;
+  color: #ffc107;
+  /* Gold color for stars */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px; /* Space between the input field and potential error message */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+}
+.review-text {
+  margin-top: 10px;
+  width: 500px;
+  overflow-wrap: break-word;
+  height: 100px;
+  word-wrap: break-word;
+
+}

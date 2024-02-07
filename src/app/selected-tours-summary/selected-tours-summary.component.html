@@ -1,0 +1,10 @@
+<div class="selected-tours-summary">
+  <h3>Selected Tours</h3>
+  <ul>
+      <li *ngFor="let tour of selectedTours">
+          <img [src]="tour.tour.LinkDoZdjecia[0]" alt="{{ tour.tour.Nazwa }}" class="tour-image">
+          {{ tour.tour.Nazwa }} - {{ tour.count }}
+      </li>
+  </ul>
+  <p>Total Order Cost: {{ service.changeCurrency(totalOrderSum) }} {{service.chosedCurrency}}</p>
+</div>

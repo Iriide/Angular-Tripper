@@ -1,0 +1,103 @@
+.selected-tours-summary {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tour-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.selected-tours-summary h3 {
+  text-align: center;
+  color: #333;
+}
+
+.tours-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tour-item {
+  display: flex;
+  align-items: space-between;
+  flex-direction: row;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.tour-image {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.tour-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-name {
+  font-weight: bold;
+}
+
+.tour-count, .tour-price {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.total-order-cost {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.basket-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buy-now-btn, .empty-basket-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background-color: blue; /* Green for buy now */
+}
+
+.empty-basket-btn {
+  background-color: red; /* Red for empty basket */
+}
+
+.buy-now-btn:hover {
+  background-color: blue;
+}
+
+.empty-basket-btn:hover {
+  background-color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .selected-tours-summary {
+    padding: 15px;
+  }
+
+  .tour-item {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .tour-info {
+    margin-top: 10px;
+  }
+}

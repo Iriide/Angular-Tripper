@@ -1,0 +1,241 @@
+/* Style for the overall tours container */
+.tours_main_content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+}
+.tours-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* Style for individual tour items */
+.tour-item {
+    position: relative;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.tour-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the tour images */
+.tour-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Style for the tour information */
+.tour-info h3 {
+    margin-top: 10px;
+    color: #333;
+}
+
+.tour-info p {
+    color: #666;
+    font-size: 0.9em;
+}
+
+app-rating {
+    width: 100%;
+
+}
+
+.card-link {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #7c7c7e; /* Bootstrap primary color */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.card-link:hover, .card-link:focus {
+    background-color: #2b2b2b; /* A darker shade for hover state */
+    color: white;
+    text-decoration: none; /* Ensures the text is not underlined on hover */
+    outline: none;
+}
+
+.delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(82, 81, 81);
+    /* Or any color you prefer */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    /* Centers the 'X' vertically */
+    cursor: pointer;
+    z-index: 5;
+}
+
+.delete:hover {
+    background-color: darkred;
+    /* Slightly darker color on hover */
+}
+
+/* Style for the action buttons */
+.tour-actions {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.action-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+.action-button:disabled {
+    background-color: #ccc;
+    cursor: default;
+}
+
+/* Style for no spots available message */
+.no-spots-message {
+    color: red;
+    font-style: italic;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.last-chance {
+    border-color: orange;
+    /* Change border color */
+    background-color: #fff3e0;
+    /* Light orange background */
+}
+
+.top-priced {
+    border-color: rgb(123, 255, 0);
+    /* Change border color */
+    background-color: #f0ffe0;
+    /* Light orange background */
+}
+
+.bottom-priced {
+    border-color: rgb(255, 38, 0);
+    /* Change border color */
+    background-color: #ffe0e0;
+    /* Light orange background */
+}
+
+.last-chance-message {
+    color: orange;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.bottom-priced-message {
+    color: rgb(255, 38, 0);
+    ;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.top-priced-message {
+    color: rgb(123, 255, 0);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.star-rating span {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 24px;
+    color: #ffda06;
+    /* Default color of stars */
+}
+
+.tours-layout {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    height: 50px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    margin: 0 10px;
+    line-height: 30px;
+}
+
+.tours-main-content {
+    flex-grow: 1;
+    /* Takes up the remaining space */
+    /* Add padding or margins as needed */
+}
+
+.tours-summary-sidebar {
+    flex-basis: 20%;
+    /* Adjust width as needed */
+    max-width: 300px;
+    /* Adjust maximum width as needed */
+    min-width: 200px;
+    /* Adjust minimum width as needed */
+    padding: 10px;
+}

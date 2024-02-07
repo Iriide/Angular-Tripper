@@ -1,0 +1,14 @@
+<nav class="navbar">
+    <a routerLink="/home" class="brand"><div class="navbar-brand">Tripper</div></a>
+      
+      <ul class="navbar-nav">
+        <li><a routerLink="/home">HOME</a></li>
+        <li><a routerLink="/tours">TOURS</a></li>
+        <li><a routerLink="/add">ADD TOUR</a></li>
+        <li class="basket-icon"><a routerLink="/basket">BASKET</a></li> 
+        <div class="basket" *ngIf="tourService.getReservedTripsCount() > 0">
+          <li class="basket-count" [ngClass]="{'basket-count-green': tourService.getReservedTripsCount() > 10}">{{ tourService.getReservedTripsCount() }}</li>
+      </div>
+        <li><a routerLink="/history">HISTORY</a></li>
+      </ul>
+    </nav>

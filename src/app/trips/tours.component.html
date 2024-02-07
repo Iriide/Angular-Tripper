@@ -1,0 +1,60 @@
+<app-filters (tagsFilterChanged)="onTagsFilterChanged($event)" (ratingFilterChanged)="onRatingFilterChanged($event)"
+    (priceFilterChanged)="onPriceFilterChanged($event)" (dateFilterChanged)="onDateFilterChanged($event)"></app-filters>
+
+<div class="tours-layout">
+    <div class="tours-main-content">
+        <div class="tours-container">
+            <div *ngFor="let tour of returnTours | paginate: { itemsPerPage: service.itemsPerPage, currentPage: currentPage }" class="tour-item"
+                [ngClass]="{'last-chance': tour.availableSpots > 0 && tour.availableSpots < 5}"
+                [ngClass]="{'top-priced': service.getTopPricedTour() === tour, 'bottom-priced' : service.getBottomPricedTour() === tour}">
+                
+                    <button class="delete" (click)="deleteTour($event, tour.Nazwa)">X</button>
+
+                    <img [src]="tour.LinkDoZdjecia[0]" alt="{{ tour.Nazwa }}" class="tour-image">
+
+                <a [routerLink]="['/details', tour.Nazwa]" class="card-link"> See Details</a>
+                
+                <div class="tour-info">
+                    <h3>{{ tour.Nazwa }}</h3>
+                    <p><strong>Destination:</strong> {{ tour.DocelowyKraj }}</p>
+                    <p><strong>Start Date:</strong> {{ tour.DataRozpoczecia | date:'mediumDate' }}</p>
+                    <p><strong>End Date:</strong> {{ tour.DataZakonczenia | date:'mediumDate' }}</p>
+                    <p><strong>Price:</strong> {{ service.getPriceInChosenCurrency(tour) }} {{service.chosedCurrency}}
+                    </p>
+                    <p><strong>Description:</strong> {{ tour.KrotkiOpis }}</p>
+                    <p><strong>Available Spots:</strong> {{ tour.availableSpots }}</p>
+                    <p><strong>Tags:</strong> {{ tour.tags.join(', ') }}</p>
+                </div>
+                <div class="tour-actions">
+                    <button class="action-button" (click)="service.reserveSpot(tour)"
+                        [disabled]="tour.availableSpots === 0">Book</button>
+                    <button class="action-button" (click)="service.calcelReservation(tour)"
+                        [disabled]="tour.availableSpots === tour.MaxIloscMiejsc">Cancel</button>
+                </div>
+                <div class="star-rating">
+                    <p>
+                        <span *ngFor="let star of [].constructor(5); let i = index" class="star">
+                            {{ i < tour.getRating() ? '★' : '☆' }} </span>
+                    </p>
+                </div>
+                <div class="no-spots-message" *ngIf="tour.availableSpots === 0">
+                    No more spots available!
+                </div>
+                <div class="last-chance-message" *ngIf="tour.availableSpots > 0 && tour.availableSpots < 5">
+                    Last chance! Only {{ tour.availableSpots }} spots left!
+                </div>
+                <div class="top-priced-message" *ngIf="service.getTopPricedTour() === tour">
+                    Top priced offer!
+                </div>
+                <div class="bottom-priced-message" *ngIf="service.getBottomPricedTour() === tour">
+                    Best priced offer!
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <app-selected-tours-summary class="tours-summary-sidebar"></app-selected-tours-summary>
+</div>
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>

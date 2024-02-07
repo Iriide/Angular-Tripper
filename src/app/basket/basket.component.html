@@ -1,0 +1,26 @@
+
+<div class="selected-tours-summary">
+  <h3>Your Basket</h3>
+
+  <div class="tours-list">
+    <ul>
+      <li *ngFor="let tour of getSelectedTours(); let i = index" class="tour-item">
+        <input type="checkbox" [id]="'checkbox-' + i" [(ngModel)]="tour.selected">
+        <label [for]="'checkbox-' + i">
+          <img [src]="tour.tour.LinkDoZdjecia[0]" alt="{{ tour.tour.Nazwa }}" class="tour-image">
+          <div class="tour-info">
+            <span class="tour-name">{{ tour.tour.Nazwa }}</span>
+            <span class="tour-count">Quantity: {{ tour.count }}</span>
+            <span class="tour-price">Price: {{ service.changeCurrency(tour.tour.CenaJednostkowa) }} {{service.chosedCurrency}}</span>
+          </div>
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <p class="total-order-cost">Total Order Cost: {{ service.changeCurrency(totalOrderSum) }} {{service.chosedCurrency}}</p>
+  
+  <div class="basket-controls">
+    <button class="buy-now-btn" (click)="buyTours()" >Buy Now</button>
+  </div>
+</div>

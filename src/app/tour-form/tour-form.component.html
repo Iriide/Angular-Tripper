@@ -1,0 +1,94 @@
+<div class="filter-section">
+    <div class="filters">
+        <form #tourForm="ngForm" (ngSubmit)="onSubmit(tourForm)" novalidate>
+            <!-- Name field -->
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="nazwa" ngModel required pattern="[a-zA-Z ]*" #nazwa="ngModel">
+                <div *ngIf="nazwa.invalid && nazwa.touched" class="error">
+                    Name is required and must be a string.
+                </div>
+            </div>
+        
+            <!-- Destination Country field -->
+            <div>
+                <label for="destination">Destination Country:</label>
+                <input type="text" id="destination" name="docelowyKraj" ngModel required pattern="[a-zA-Z ]*" #docelowyKraj="ngModel">
+                <div *ngIf="docelowyKraj.invalid && docelowyKraj.touched" class="error">
+                    Destination is required and must be a string.
+                </div>
+            </div>
+        
+            <!-- Start Date field -->
+            <div>
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="dataRozpoczecia" ngModel required pattern="^\d{4}-\d{2}-\d{2}$" #dataRozpoczecia="ngModel">
+                <div *ngIf="dataRozpoczecia.invalid && dataRozpoczecia.touched" class="error">
+                    Start date is required and must be in YYYY-MM-DD format.
+                </div>
+            </div>
+        
+            <!-- End Date field -->
+            <div>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="dataZakonczenia" ngModel required pattern="^\d{4}-\d{2}-\d{2}$" #dataZakonczenia="ngModel">
+                <div *ngIf="dataZakonczenia.invalid && dataZakonczenia.touched" class="error">
+                    End date is required and must be in YYYY-MM-DD format.
+                </div>
+            </div>
+        
+            <!-- Price field -->
+            <div>
+                <label for="price">Price [EUR]:</label>
+                <input type="number" id="price" name="cenaJednostkowa" ngModel required min="0" #cenaJednostkowa="ngModel">
+                <div *ngIf="cenaJednostkowa.invalid && cenaJednostkowa.touched" class="error">
+                    Price is required and must be a positive number.
+                </div>
+            </div>
+            
+            <!-- Price -->
+            <div>
+                <label for="price">Avaiable Spots:</label>
+                <input type="number" id="spots" name="spots" ngModel required min="0" #spots="ngModel">
+                <div *ngIf="spots.invalid && spots.touched" class="error">
+                    Avaiable spots are required and must be a positive number.
+                </div>
+            </div>
+            <!-- Description -->
+            <div>
+                <label for="price">Description:</label>
+                <input type="text" id="description" name="description" ngModel required #description="ngModel">
+                <div *ngIf="description.invalid && description.touched" class="error">
+                    Description is required and must be a string.
+                </div>
+            </div>
+            <!-- Image -->
+            <div>
+                <label for="img">Image URL:</label>
+                <input type="text" id="img" name="img" ngModel required #img="ngModel">
+                <div *ngIf="img.invalid && img.touched" class="error">
+                    Images URL is required and must be a URL address and comma separated.
+                </div>
+            </div>
+            <!-- Tags -->
+            <div class="form-group">
+                <label>Tags:</label>
+                <div *ngFor="let tag of availableTags" class="checkbox-container">
+                    <input type="checkbox" [id]="tag" [value]="tag" (change)="onTagChange($event)">
+                    <span class="custom-checkbox"></span>
+                    <label [for]="tag">{{ tag }}</label>
+                </div>
+            </div>
+            <!-- Map -->
+            <div>
+                <label for="map">Map URL:</label>
+                <input type="text" id="map" name="map" ngModel required #map="ngModel">
+                <div *ngIf="map.invalid && map.touched" class="error">
+                    Map URL is required and must be a URL address.
+                </div>
+            </div>
+            <button type="submit" [disabled]="tourForm.invalid">Add Tour</button>
+        </form>
+        
+    </div>
+</div>

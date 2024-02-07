@@ -1,0 +1,18 @@
+<div class="selected-tours-summary">
+    <h3>Your History</h3>
+  
+    <div class="tours-list">
+      <ul>
+        <li *ngFor="let tour of selectedTours; let i = index" class="tour-item">
+
+            <img [src]="tour.tour.LinkDoZdjecia[0]" alt="{{ tour.tour.Nazwa }}" class="tour-image">
+            <div class="tour-info">
+              <span class="tour-name">{{ tour.tour.Nazwa }}</span>
+              <span class="tour-count">Quantity: {{ tour.count }}</span>
+              <span class="tour-price">Price: {{ service.changeCurrency(tour.tour.CenaJednostkowa) }} {{service.chosedCurrency}}</span>
+            </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>

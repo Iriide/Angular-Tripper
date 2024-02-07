@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "tripper-backend-84181": {
+      "hosting": {
+        "tripper": [
+          "tripper-backend-84181"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "tripper-backend-84181"
+  }
+}
